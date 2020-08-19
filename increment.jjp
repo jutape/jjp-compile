@@ -1,0 +1,6 @@
+write('digite um numero inteiro: ')
+int a = read(str)
+int i
+repeat (i = 0; i < a ; i++)
+    write(i + 1)
+#rep#
