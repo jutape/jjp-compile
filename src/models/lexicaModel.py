@@ -1,4 +1,3 @@
-class LexicaGroup:
 
     def __init__(self):
         pass
@@ -16,9 +15,9 @@ class LexicaGroup:
         self.stringSeparators = data
 
 
-x =  LexicaGroup()
+# x =  LexicaGroup()
 
-x.setStringsSeparators({'key':'value'})
+# x.setStringsSeparators({'key':'value'})
 
-print(x.setStringsSeparators);
+# print(x.setStringsSeparators);
 

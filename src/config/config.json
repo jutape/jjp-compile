@@ -1,5 +1,21 @@
 {
     "reservedWords": [
-        "teste"
-    ]
+        "float",
+        "int",
+        "void",
+        "boolean",
+        "str",
+        "if",
+        "repeat",
+        "list",
+        ""
+    ],
+    "especialCharacter": [
+        "#",
+        "&",
+        "," 
+    ],
+    "stringSeparators": {
+        "\"": "\""
+    }
 }

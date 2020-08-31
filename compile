@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 # shebang
 import sys
-
 jjpFile = sys.argv[1]
 
 try:
@@ -9,5 +8,4 @@ try:
 except Exception:
     raise Exception('Houve um problema para encontrar ou ler o programa.')
 
-program = program.split('\n'    )
-print(program)
+Lines = program.split('\n')
