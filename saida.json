@@ -1,0 +1,80 @@
+[
+    {
+        "lineValues": [
+            { "type": "stringSeparator", "value": "\"" },
+            { "type": "string", "value": "hello world" },
+            { "type": "stringSeparator", "value": "\"" }
+        ]
+    },
+    {
+        "lineValues": [
+            { "type": "reserved", "value": "#" },
+            { "type": "separator", "value": "," },
+            { "type": "separator", "value": "," }
+        ]
+    },
+    { "lineValues": [{ "type": "reserved", "value": "=" }] },
+    {
+        "lineValues": [
+            { "type": "reserved", "value": "#" },
+            { "type": "reserved", "value": "#" }
+        ]
+    },
+    {
+        "lineValues": [
+            { "type": "reserved", "value": "#" },
+            { "type": "separator", "value": "," },
+            { "type": "separator", "value": "," }
+        ]
+    },
+    { "lineValues": [{ "type": "reserved", "value": "=" }] },
+    { "lineValues": [{ "type": "reserved", "value": "=" }] },
+    {
+        "lineValues": [
+            { "type": "reserved", "value": "=" },
+            { "type": "separator", "value": "," }
+        ]
+    },
+    {
+        "lineValues": [
+            { "type": "reserved", "value": "#" },
+            { "type": "reserved", "value": "#" }
+        ]
+    },
+    { "lineValues": [{ "type": "reserved", "value": "=" }] },
+    { "lineValues": [{ "type": "reserved", "value": "=" }] },
+    { "lineValues": [{ "type": "reserved", "value": "=" }] },
+    {
+        "lineValues": [
+            { "type": "reserved", "value": "=" },
+            { "type": "separator", "value": "," },
+            { "type": "separator", "value": "," }
+        ]
+    },
+    {
+        "lineValues": [
+            { "type": "reserved", "value": "=" },
+            { "type": "especial", "value": "&" },
+            { "type": "especial", "value": "&" }
+        ]
+    },
+    {
+        "lineValues": [
+            { "type": "reserved", "value": "=" },
+            { "type": "separator", "value": "," },
+            { "type": "separator", "value": "," }
+        ]
+    },
+    {
+        "lineValues": [
+            { "type": "reserved", "value": "=" },
+            { "type": "reserved", "value": "=" }
+        ]
+    },
+    {
+        "lineValues": [
+            { "type": "reserved", "value": "#" },
+            { "type": "reserved", "value": "#" }
+        ]
+    }
+]
