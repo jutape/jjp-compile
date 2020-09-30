@@ -19,28 +19,56 @@ stringsSeparators = {
 }
 
 lexicaFile = []
-
-
+obj = {  'lineValues': [] }
 
 inString = False
+inNumber = False
 
 stringConcat = ""
+stringNumber = ""
+
 def checkInString(character):
     if(inString):
         global stringConcat
         stringConcat +=  character
 
+def checkInNumber(character):
+    if(inString):
+        global stringConcat
+        stringConcat +=  character
 
-obj = {  'lineValues': [] }
 def setLexicaObjList(listLexicaR,charValue):
+    global obj
+
     objLexica = {'type':listLexicaR[charValue], 'value':charValue }
     obj['lineValues'].append(objLexica)
 
+
+def isNumber(value):
+    try:
+        float(value)
+        print("ddd")
+        return True
+    except:
+        return False
+
+def setObjString():
+    global inString
+    global obj
+
+    inString = False
+    print("dfsdfsfs")
+    objLexica = {'type':'string', 'value':stringConcat }
+    obj['lineValues'].append(objLexica)
 
 def basicTokens(charValue):
     global inString
     global stringConcat
     global inString
+    global inNumber
+
+    # if(inString):
+    #     return
 
     if(charValue in stringsSeparators):
         if(not inString):
@@ -59,30 +87,35 @@ for line in inputFile:
 
     for index in range(len(line)):
         charValue = line[index]
+        isNotEnd = index + 1 < len(line)
 
-        if(index + 1 < len(line)):
+        # if(isNumber(charValue)):
+        #     if(isNotEnd):
+        #         if(isNumber(line[index + 1])):
+        #             stringNumber += charValue
+        #         else:
+        #             objLexica = {'type':'number', 'value':stringNumber}
+        #             obj['lineValues'].append(objLexica)
+        print( inString)
+        if(isNumber(charValue) and (not inString)):
+            print("entrou aqui")
+            objLexica = {'type':'number', 'value':charValue }
+            obj['lineValues'].append(objLexica)
+        else:
+            checkInString(charValue)
+            basicTokens(charValue)
+
+        if(isNotEnd):
             if(line[index + 1] in stringsSeparators and inString):
-                checkInString(charValue)
-                inString = False
-                objLexica = {'type':'string', 'value':stringConcat }
-                obj['lineValues'].append(objLexica)
-                
-        checkInString(charValue)
-        basicTokens(charValue)
+                setObjString()
+                           
 
     if(len(obj['lineValues']) > 0):    
         lexicaFile.append(obj)
         obj = {  'lineValues': [] }
     
 
-def isNumber(n):
-    try:  
-        return type(float(n)) == float 
-    except:
-        return False
 
-
-#dasdsad
-print(json.dumps(lexicaFile))
+# print(json.dumps(lexicaFile))
 
     
