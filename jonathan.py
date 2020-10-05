@@ -47,7 +47,6 @@ def setLexicaObjList(listLexicaR,charValue):
 def isNumber(value):
     try:
         float(value)
-        print("ddd")
         return True
     except:
         return False
@@ -56,8 +55,7 @@ def setObjString():
     global inString
     global obj
 
-    inString = False
-    print("dfsdfsfs")
+    # inString = False
     objLexica = {'type':'string', 'value':stringConcat }
     obj['lineValues'].append(objLexica)
 
@@ -67,20 +65,35 @@ def basicTokens(charValue):
     global inString
     global inNumber
 
-    # if(inString):
-    #     return
-
     if(charValue in stringsSeparators):
         if(not inString):
             stringConcat = ""
             inString = True
+        else:
+            inString = False
+
         setLexicaObjList(stringsSeparators,charValue)
-    elif(charValue in reservedList):
+    elif(charValue in reservedList and not inString):
         setLexicaObjList(reservedList,charValue)
-    elif(charValue in especialCharacterList):
+    elif(charValue in especialCharacterList and not inString):
         setLexicaObjList(especialCharacterList,charValue)
-    elif(charValue in separatorList):
+    elif(charValue in separatorList and not inString):
         setLexicaObjList(separatorList,charValue)
+
+
+def setNumber(charValue):
+    global stringNumber
+
+    if(stringNumber != ""):
+        objLexica = {'type':'number', 'value':stringNumber }
+        obj['lineValues'].append(objLexica)
+        stringNumber = ""
+    else:
+        objLexica = {'type':'number', 'value':charValue }
+        obj['lineValues'].append(objLexica)
+        
+
+
 
 
 for line in inputFile:
@@ -88,19 +101,16 @@ for line in inputFile:
     for index in range(len(line)):
         charValue = line[index]
         isNotEnd = index + 1 < len(line)
-
-        # if(isNumber(charValue)):
-        #     if(isNotEnd):
-        #         if(isNumber(line[index + 1])):
-        #             stringNumber += charValue
-        #         else:
-        #             objLexica = {'type':'number', 'value':stringNumber}
-        #             obj['lineValues'].append(objLexica)
-        print( inString)
+        
         if(isNumber(charValue) and (not inString)):
-            print("entrou aqui")
-            objLexica = {'type':'number', 'value':charValue }
-            obj['lineValues'].append(objLexica)
+            if(isNotEnd):
+                if(isNumber(line[index + 1])):
+                    stringNumber += charValue
+                    print(stringNumber)
+                else:
+                    setNumber(charValue)
+            else:
+                setNumber(charValue)
         else:
             checkInString(charValue)
             basicTokens(charValue)
@@ -116,6 +126,6 @@ for line in inputFile:
     
 
 
-# print(json.dumps(lexicaFile))
+print(json.dumps(lexicaFile))
 
     

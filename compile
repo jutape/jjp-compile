@@ -5,10 +5,11 @@ import json
 from src.controllers.LexicaController import LexicaController
 jjpFile = sys.argv[1]
 
-
 try:
     program = open(jjpFile).read()
     confWords = json.load(open('./src/config/configWords.json'))
+    lexica = LexicaController(confWords)
+    print(lexica.lexicaModel.getReserveds())
     
 except Exception:
     raise Exception('Houve um problema para encontrar ou ler o programa.')
