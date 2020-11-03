@@ -1,9 +1,7 @@
-
-"hello world"
-# getDelta(float a,float b, float c) float
-    float delta = b * b - 54 * a * c 
-    .delta
-##
+# getDelta(float a,float b, float c) float 
+    float delta = b * b - 54 * a * c  
+    .delta 
+## 
 
 # getXValues(float a, float b, float delta) list
     float x1 = (-b + jjSqr(delta))/(2 * a)
@@ -17,6 +15,7 @@ float b = read(float)
 float c = read(float)
 
 float delta = getDelta(a, b, c)
+
 
 if(a != 0 && delta > 0)
     list resultado = getXValues(a, b, delta)

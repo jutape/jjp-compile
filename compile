@@ -2,16 +2,30 @@
 # shebang
 import sys
 import json
+from loguru import logger
 from src.controllers.LexicaController import LexicaController
-jjpFile = sys.argv[1]
 
-try:
-    program = open(jjpFile).read()
-    confWords = json.load(open('./src/config/configWords.json'))
-    lexica = LexicaController(confWords)
-    print(lexica.lexicaModel.getReserveds())
-    
-except Exception:
-    raise Exception('Houve um problema para encontrar ou ler o programa.')
 
-Lines = program.split('\n')
+if __name__ == '__main__':
+    logger.info('Iniciando compilador')
+    jjpFile = sys.argv[1]
+    try:
+        logger.info(f'Iniciando leitura do arquivo {jjpFile}')
+        program = open(jjpFile).read()
+        logger.success('Leitura realizada com sucesso')
+        logger.info(f'Lendo do arquivo de configuração')
+        confWords = json.load(open('./src/config/configWords.json'))
+        logger.success('Leitura realizada com sucesso')
+    except Exception:
+        logger.exception('Houve um problema para encontrar ou ler o programa.')
+
+    lexicaController = LexicaController(confWords)
+    logger.info('Começando a processar o arquivo de entrada')
+    lines = program.split('\n')
+    lexicaResult = []
+    for line in lines:
+        logger.info(f'Linha: {line}')
+        lineResult = lexicaController.processLine(line)
+        lexicaResult.append(lineResult)
+        for elementLine in lineResult:
+            logger.success(list(elementLine.keys())[0] + ' - ' + elementLine[list(elementLine.keys())[0]])

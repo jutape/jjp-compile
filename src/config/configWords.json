@@ -1,23 +1,31 @@
 {
-    "reservedWords": {
-        "float": "reserved",
-        "int": "reserved",
-        "void": "reserved",
-        "boolean": "reserved",
-        "str": "reserved",
-        "if": "reserved",
-        "repeat": "reserved",
-        "list": "reserved"
-        
-    },
-    "especialCharacter": {
-        "&": "especial",
-        "=": "especial",
-        "#": "especial",
-        ",": "especial",
-        ".": "especial"
-    },
+    "reservedWords": [
+        "float",
+        "int",
+        "void",
+        "boolean",
+        "str",
+        "if",
+        "repeat"
+    ],
+    "especialCharacter": [
+        "&",
+        "=",
+        "#",
+        ",",
+        "."
+    ],
+    "separators": [
+        " ",
+        ",",
+        ";",
+        "{",
+        "}",
+        "(",
+        ")"
+    ],
     "stringSeparators": {
-        "\"": "stringSeparator"
+        "\"": "\"",
+        "'": "'"
     }
 }

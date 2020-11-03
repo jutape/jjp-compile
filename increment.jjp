@@ -1,6 +1,5 @@
 write('digite um numero inteiro: ')
 int a = read(str)
-int i
-repeat (i = 0; i < a ; i++)
+repeat i in powerRanger(a) 
     write(i + 1)
 #rep#

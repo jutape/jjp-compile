@@ -1,22 +1,24 @@
 reserved = [
-    '#include',
-    'int',
-    'main',
-    'char',
-    'printf',
-    'scanf',
-    'while',
-    'printf',
-    'return'
+    "float",
+    "int",
+    "void",
+    "boolean",
+    "str",
+    "if",
+    "repeat",
+    "write"
 ]
 
 especialCharacters = [
     '&',
     '*',
-    '--',
-    '++',
+    '-',
+    '+',
     '<',
     '>'
+    "=",
+    "#",
+    "."
 ]
 
 separators = [
@@ -30,8 +32,10 @@ separators = [
 ]
 
 stringsSeparators = {
-    '"': '"'
+    '"': '"',
+    '\'': '\''
 }
+
 
 def isNumber(value):
     try:
@@ -39,6 +43,7 @@ def isNumber(value):
         return True
     except:
         return False
+
 
 def findAllIndexes(input_str, search_str):
     l1 = []
@@ -52,12 +57,14 @@ def findAllIndexes(input_str, search_str):
         index = i + 1
     return l1
 
+
 def removeEmpty(arrayLine):
     result = []
     for objLine in arrayLine:
         if not ('' in objLine.keys() or ' ' in objLine.keys()):
             result.append(objLine)
     return result
+
 
 def getStrings(line):
     result = []
@@ -71,12 +78,13 @@ def getStrings(line):
         elif init != None and line[index] == stringsSeparators[line[init]]:
             if last:
                 result.append({f"{line[last:init]}": None})
-            result.append({f"{line[init:index+1]}": 'string'})
+            result.append({f"{line[init:index + 1]}": 'string'})
             init = None
-            last = index+1
+            last = index + 1
     result.append({f"{line[last:]}": None})
     return removeEmpty(result)
-    
+
+
 def finderCharacter(arrayLine, findItens, typeName):
     result = []
     for obj in arrayLine:
@@ -90,13 +98,14 @@ def finderCharacter(arrayLine, findItens, typeName):
                 allItens.sort()
                 for item in allItens:
                     result.append({f"{key[lastEspecial:item].strip()}": None})
-                    lastEspecial = item+1
+                    lastEspecial = item + 1
                     result.append({f"{key[item]}": typeName})
                 result.append({f"{key[lastEspecial:].strip()}": None})
-                
+
             else:
                 result.append(obj)
     return removeEmpty(result)
+
 
 def classify(arrayLine):
     result = []
@@ -111,6 +120,7 @@ def classify(arrayLine):
             else:
                 result.append({f"{key}": 'variable'})
     return result
+
 
 def getLineValues(line):
     newLine = getStrings(line)

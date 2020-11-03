@@ -3,11 +3,24 @@ inputFile = open('./baskhara.jjp').read().split('\n')
 
 reservedList = {
     '#':'reserved',
-    '=':'reserved'
+    '=':'reserved',
+    "float": "reserved",
+    "int": "reserved",
+    "void": "reserved",
+    "boolean": "reserved",
+    "str": "reserved",
+    "if": "reserved",
+    "repeat": "reserved"
 }
+
+maxLengthReserved = 7
     
 especialCharacterList = {
-    '&':'especial',
+    "&": "especial",
+    "=": "especial",
+    "#": "especial",
+    ",": "especial",
+    ".": "especial"
 }
 
 separatorList = {
@@ -80,11 +93,19 @@ def basicTokens(charValue):
     elif(charValue in separatorList and not inString):
         setLexicaObjList(separatorList,charValue)
 
+def reservedLogic(charValue,index,line):
+    global inString
+    if(charValue in reservedList and not inString):
+        setLexicaObjList(reservedList,charValue)
+    pass
+
+
 
 def setNumber(charValue):
     global stringNumber
 
     if(stringNumber != ""):
+        stringNumber += charValue
         objLexica = {'type':'number', 'value':stringNumber }
         obj['lineValues'].append(objLexica)
         stringNumber = ""
@@ -101,12 +122,10 @@ for line in inputFile:
     for index in range(len(line)):
         charValue = line[index]
         isNotEnd = index + 1 < len(line)
-        
         if(isNumber(charValue) and (not inString)):
             if(isNotEnd):
                 if(isNumber(line[index + 1])):
                     stringNumber += charValue
-                    print(stringNumber)
                 else:
                     setNumber(charValue)
             else:
@@ -125,7 +144,7 @@ for line in inputFile:
         obj = {  'lineValues': [] }
     
 
-
+# print(lexicaFile)
 print(json.dumps(lexicaFile))
 
     
