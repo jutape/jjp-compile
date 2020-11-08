@@ -1,4 +1,1 @@
-float teste = 2 + 3
-str caixa = "box"
-str caixa2 = caixa + "sdfsdf" * 2
-# if(sjdnckjdsck)
+write teste

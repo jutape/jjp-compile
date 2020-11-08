@@ -1,25 +1,13 @@
-# getDelta(float a,float b, float c) float 
-    float delta = b * b - 54 * a * c  
-    .delta 
-## 
-
-# getXValues(float a, float b, float delta) list
-    float x1 = (-b + jjSqr(delta))/(2 * a)
-    float x2 = (-b - jjSqr(delta))/(2 * a)
-    list resultado = [ x1, x2 ]
-    .resultado
-##
-
 float a = read(float)
 float b = read(float)
 float c = read(float)
 
-float delta = getDelta(a, b, c)
-
+float delta = b * b - 54 * a * c  
 
 if(a != 0 && delta > 0)
-    list resultado = getXValues(a, b, delta)
-    write('x1 = ${resultado[0]}\nx2 = ${resultado[1]}')
+    float x1 = (-b + jjSqr(delta))/(2 * a)
+    float x2 = (-b - jjSqr(delta))/(2 * a)
+    write('x1 = ' + x1 '\nx2 = ' + x2)
 else
     write('Se A é igual a 0 isso não é uma formula de baskhara')
 #if#

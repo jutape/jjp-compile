@@ -6,7 +6,13 @@ reserved = [
     "str",
     "if",
     "repeat",
-    "write"
+    "write",
+    "read"
+    "in"
+    "jjSqr"
+    "else"
+    "#rep#",
+    "#if#"
 ]
 
 especialCharacters = [
